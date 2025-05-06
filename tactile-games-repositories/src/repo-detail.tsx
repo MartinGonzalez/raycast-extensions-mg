@@ -1,4 +1,4 @@
-import { Detail, getPreferenceValues, showToast, Toast, open, Icon } from "@raycast/api";
+import { Detail, getPreferenceValues, showToast, Toast, open, Icon, ActionPanel, Action } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { Octokit } from "@octokit/rest";
 import { Buffer } from "buffer";
@@ -195,6 +195,15 @@ export default function RepoDetail({ repo }: { repo: Repository }) {
             </>
           )}
         </Detail.Metadata>
+      }
+      actions={
+        <ActionPanel>
+          <Action.OpenInBrowser
+            title="Open GitHub Repo"
+            url={repo.html_url}
+            shortcut={{ modifiers: ["cmd"], key: "enter" }}
+          />
+        </ActionPanel>
       }
     />
   );
